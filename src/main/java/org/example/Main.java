@@ -17,7 +17,6 @@ public class Main {
         name = scan.nextLine();
         Transcript transcript = new Transcript();
         Gson gson = new Gson();
-        String jsonRequest = gson.toJson(transcript);
         HttpClient httpClient = HttpClient.newHttpClient();
 
         HttpRequest getRequest = HttpRequest.newBuilder()
