@@ -20,7 +20,7 @@ public class Main {
         HttpClient httpClient = HttpClient.newHttpClient();
 
         HttpRequest getRequest = HttpRequest.newBuilder()
-                .uri(new URI("https://pokeapi.co/api/v2/pokemon/"+name))
+                .uri(new URI("https://pokeapi.co/api/v2/pokemon/"+name.trim().toLowerCase()))
                 .header("Auth","abc")
                 .GET()
                 .build();
