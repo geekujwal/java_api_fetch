@@ -24,16 +24,21 @@ public class Main {
                 .header("Auth","abc")
                 .GET()
                 .build();
-        HttpResponse<String> getResponse =httpClient.send(getRequest, BodyHandlers.ofString());
-        transcript = gson.fromJson(getResponse.body(),Transcript.class);
+        try {
+            HttpResponse<String> getResponse = httpClient.send(getRequest, BodyHandlers.ofString());
+            transcript = gson.fromJson(getResponse.body(), Transcript.class);
 
-        System.out.println("Pokemon Pokedex number: "+transcript.getId());
-        System.out.println("Pokemon name: "+transcript.getName());
-        System.out.println("Pokemon type: ");
-        for(int i =0;i<transcript.getTypes().length;i++){
-            System.out.println("   "+transcript.getTypes()[i].getSlot()+". "+transcript.getTypes()[i].getType().getName());
+            System.out.println("Pokemon Pokedex number: " + transcript.getId());
+            System.out.println("Pokemon name: " + transcript.getName());
+            System.out.println("Pokemon type: ");
+            for (int i = 0; i < transcript.getTypes().length; i++) {
+                System.out.println("   " + transcript.getTypes()[i].getSlot() + ". " + transcript.getTypes()[i].getType().getName());
+            }
+            System.out.println("Pokemon weight: " + transcript.getWeight());
+            System.out.println("Pokemon height: " + transcript.getHeight());
+        }catch (Exception e){
+            System.out.println("Can't find this pokemon.");
         }
-        System.out.println("Pokemon weight: "+transcript.getWeight());
-        System.out.println("Pokemon height: "+transcript.getHeight());
-    }
+        }
+
 }
